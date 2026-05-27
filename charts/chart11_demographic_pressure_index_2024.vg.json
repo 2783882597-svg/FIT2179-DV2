@@ -1,0 +1,245 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Demographic Pressure Index (2024)",
+    "subtitle": "Custom score from ageing, dependency, urbanisation and concentration",
+    "anchor": "start"
+  },
+
+  "width": 560,
+  "height": 300,
+
+  "data": {
+    "values": [
+      {
+        "metric": "Ageing share",
+        "raw_value": 7.7,
+        "raw_label": "65+ share: 7.7%",
+        "score": 38.5,
+        "interpretation": "Ageing is still moderate, but the older population is becoming more visible."
+      },
+      {
+        "metric": "Dependency ratio",
+        "raw_value": 41.9,
+        "raw_label": "41.9 dependents per 100 working-age people",
+        "score": 41.9,
+        "interpretation": "The ratio has fallen since 2000, suggesting a larger working-age base."
+      },
+      {
+        "metric": "Urban share",
+        "raw_value": 76.9,
+        "raw_label": "Urban share: 76.9%",
+        "score": 76.9,
+        "interpretation": "High urbanisation increases demand for city housing, transport and services."
+      },
+      {
+        "metric": "Population concentration",
+        "raw_value": 59.8,
+        "raw_label": "Top 5 states: 59.8%",
+        "score": 59.8,
+        "interpretation": "Population is concentrated in a small number of large states."
+      }
+    ]
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#e3e8ee",
+        "strokeWidth": 7,
+        "opacity": 0.85
+      },
+      "encoding": {
+        "y": {
+          "field": "metric",
+          "type": "ordinal",
+          "sort": [
+            "Ageing share",
+            "Dependency ratio",
+            "Urban share",
+            "Population concentration"
+          ],
+          "title": null
+        },
+        "x": {
+          "datum": 0,
+          "type": "quantitative",
+          "title": "Pressure score (0-100)",
+          "scale": {
+            "domain": [0, 100]
+          },
+          "axis": {
+            "values": [0, 25, 50, 75, 100]
+          }
+        },
+        "x2": {
+          "field": "score"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 220,
+        "color": "#533afd",
+        "stroke": "white",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "y": {
+          "field": "metric",
+          "type": "ordinal",
+          "sort": [
+            "Ageing share",
+            "Dependency ratio",
+            "Urban share",
+            "Population concentration"
+          ],
+          "title": null
+        },
+        "x": {
+          "field": "score",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "metric",
+            "type": "nominal",
+            "title": "Metric"
+          },
+          {
+            "field": "raw_label",
+            "type": "nominal",
+            "title": "Raw value"
+          },
+          {
+            "field": "score",
+            "type": "quantitative",
+            "title": "Pressure score",
+            "format": ".1f"
+          },
+          {
+            "field": "interpretation",
+            "type": "nominal",
+            "title": "Interpretation"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 14,
+        "fontSize": 12,
+        "fontWeight": 400,
+        "color": "#273951"
+      },
+      "encoding": {
+        "y": {
+          "field": "metric",
+          "type": "ordinal",
+          "sort": [
+            "Ageing share",
+            "Dependency ratio",
+            "Urban share",
+            "Population concentration"
+          ]
+        },
+        "x": {
+          "field": "score",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100]
+          }
+        },
+        "text": {
+          "field": "raw_label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "score": 54.3
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#ea2261",
+        "strokeDash": [5, 5],
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "score",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100]
+          }
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "score": 54.3,
+            "label": "Composite index: 54.3 / 100"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 8,
+        "dy": -118,
+        "fontSize": 13,
+        "fontWeight": 600,
+        "color": "#ea2261"
+      },
+      "encoding": {
+        "x": {
+          "field": "score",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100]
+          }
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "domainColor": "#e3e8ee",
+      "tickColor": "#e3e8ee",
+      "gridColor": "#e3e8ee",
+      "gridOpacity": 0.7,
+      "labelColor": "#64748d",
+      "labelFontSize": 11,
+      "titleColor": "#273951",
+      "titleFontSize": 12
+    },
+    "font": "Inter, SF Pro Display, system-ui, sans-serif"
+  }
+}
