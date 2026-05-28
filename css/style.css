@@ -523,3 +523,42 @@ main {
   .nav { padding: 16px 16px 0; }
   .nav__inner { padding: 8px 12px; }
 }
+
+/* ============================================================
+   Wider breathing room for the final section
+   ============================================================ */
+.data-sources-section {
+  max-width: 1180px;
+  margin: 96px auto 64px auto;
+  padding: 56px clamp(36px, 6vw, 80px);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-2);
+}
+
+.data-sources-title {
+  margin-top: 0;
+  margin-bottom: 28px;
+}
+
+.data-sources-list {
+  max-width: 1040px;
+  margin: 0;
+  padding-left: 24px;
+  line-height: 1.65;
+}
+
+.data-sources-list li {
+  margin-bottom: 14px;
+  padding-left: 6px;
+}
+
+.ai-acknowledgement,
+.project-meta {
+  max-width: 1040px;
+  margin: 28px 0 0 0;
+  line-height: 1.65;
+  color: #102a43;
+}
+
